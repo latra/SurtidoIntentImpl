@@ -61,6 +61,7 @@ public class MainActivity extends Activity implements OnClickListener{
 			case R.id.button2:
 				Toast.makeText(this, getString(R.string.opcion2), Toast.LENGTH_LONG).show();
 				in = new Intent(Intent.ACTION_VIEW, Uri.parse("geo:0,0?q=" + address));
+				//in = new Intent(Intent.ACTION_VIEW, Uri.parse("geo:0,0?q=" + textToSearch));
 				startActivity(in);
 				break;
 			case R.id.button3:
