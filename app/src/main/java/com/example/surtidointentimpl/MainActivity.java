@@ -2,6 +2,7 @@ package com.example.surtidointentimpl;
 
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.SearchManager;
 import android.content.Intent;
@@ -44,6 +45,7 @@ public class MainActivity extends Activity implements OnClickListener{
 			  requestPermissions();
 	}
 
+	@SuppressLint("NonConstantResourceId")
 	@Override
 	public void onClick (View v) {
 		Intent in;
@@ -162,18 +164,22 @@ public class MainActivity extends Activity implements OnClickListener{
 
 		if (Build.VERSION.SDK_INT >= 23) {
 		if (ckeckPermissionsCallPhone()) {
-			Toast.makeText(this, getString(R.string.opcion5), Toast.LENGTH_LONG).show();
-			in = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + getText(R.string.telef)));
-			startActivity(in);
+			callPhoneAction();
 		} else {
 			    requestPermissionsCallPhone();
 		}
 		}
 		else {
-			Toast.makeText(this, getString(R.string.opcion5), Toast.LENGTH_LONG).show();
-			in = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + getText(R.string.telef)));
-			startActivity(in);
+			callPhoneAction();
 		}
+	}
+
+	private void callPhoneAction() {
+		Intent in;
+
+		Toast.makeText(this, getString(R.string.opcion5), Toast.LENGTH_LONG).show();
+		in = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + getText(R.string.telef)));
+		startActivity(in);
 	}
 
 
